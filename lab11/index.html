@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тортики & Тістечка</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Приховані radio для CSS-фільтра (КАТЕГОРІЇ) -->
+  <input type="radio" name="cat" id="cat-all" checked hidden>
+  <input type="radio" name="cat" id="cat-pirig" hidden>
+  <input type="radio" name="cat" id="cat-rulet" hidden>
+  <input type="radio" name="cat" id="cat-syrnyky" hidden>
+  <input type="radio" name="cat" id="cat-tistechko" hidden>
+  <input type="radio" name="cat" id="cat-tort" hidden>
+
+  <header>
+    <h1>Тортики <span>&</span> Тістечка</h1>
+
+    <!-- Мобільні фільтри (лейбли до radio) -->
+    <nav class="filters-mobile">
+      <label for="cat-pirig">Пиріг</label>
+      <label for="cat-rulet">Рулет</label>
+      <label for="cat-syrnyky">Сирники</label>
+      <label for="cat-tistechko">Тістечко</label>
+      <label for="cat-tort">Торт</label>
+      <label class="reset" for="cat-all">Скинути фільтр</label>
+    </nav>
+  </header>
+
+  <main class="gallery">
+    <article class="card" data-cat="Торт">
+      <img src="img/smetankovi.jfif" alt="Сметанковий торт">
+      <h3 class="name">Торт: Сметанковий</h3>
+      <p class="calories">Калорії у порції 265 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Тістечко">
+      <img src="img/mafin.jfif" alt="Маффін">
+      <h3 class="name">Тістечко: Маффін</h3>
+      <p class="calories">Калорії у порції 305 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Сирники">
+      <img src="img/sirnik.jfif" alt="Сирник Три ягоди">
+      <h3 class="name">Сирники: Три ягоди</h3>
+      <p class="calories">Калорії у порції 450 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Торт">
+      <img src="img/smachni.jfif" alt="Смачний торт">
+      <h3 class="name">Торт: Смачний</h3>
+      <p class="calories">Калорії у порції 523 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Рулет">
+      <img src="img/rulet.jfif" alt="Рулет Святковий">
+      <h3 class="name">Рулет: Святковий</h3>
+      <p class="calories">Калорії у порції 380 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Пиріг">
+      <img src="img/babysi.jfif" alt="Пиріг Свято у бабусі">
+      <h3 class="name">Пиріг: Свято у бабусі</h3>
+      <p class="calories">Калорії у порції 298 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Торт">
+      <img src="img/vedmedik.jfif" alt="Торт Ведмедик">
+      <h3 class="name">Торт: Ведмедик</h3>
+      <p class="calories">Калорії у порції 600 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Тістечко">
+      <img src="img/ryki.jfif" alt="Живі квіти">
+      <h3 class="name">Тістечко: Живі квіти</h3>
+      <p class="calories">Калорії у порції 438 кКал</p>
+    </article>
+
+    <article class="card" data-cat="Тістечко">
+      <img src="img/limon.jfif" alt="Лимонне з маком">
+      <h3 class="name">Тістечко: Лимонне з маком</h3>
+      <p class="calories">Калорії у порції 348 кКал</p>
+    </article>
+  </main>
+
+  <aside class="sidebar">
+    <h3>Калорії у порції</h3>
+    <!-- ПРОСТОЙ НЕРАБОЧИЙ СЛАЙДЕР -->
+    <input type="range" min="0" max="600" value="300">
+    <p>Від 0 до 400 кКал</p>
+
+    <nav class="filters">
+      <label for="cat-pirig">Пиріг</label>
+      <label for="cat-rulet">Рулет</label>
+      <label for="cat-syrnyky">Сирники</label>
+      <label for="cat-tistechko">Тістечко</label>
+      <label for="cat-tort">Торт</label>
+      <label class="reset" for="cat-all">Скинути фільтр</label>
+    </nav>
+  </aside>
+
+  <footer>
+    <div class="footer-left">
+      <p>Контакти: <a href="mailto:tortik@smakota.ua">tortik@smakota.ua</a></p>
+    </div>
+    <div class="footer-right">
+      <p>© 2019 Smakota</p>
+    </div>
+  </footer>
+</body>
+</html>

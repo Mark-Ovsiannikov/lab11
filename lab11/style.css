@@ -1,0 +1,118 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+
+header { text-align: center; margin: 20px 0; }
+header h1 span { color: #d33; }
+
+/* Фільтри як лейбли */
+.filters, .filters-mobile { display: grid; gap: 10px; }
+.filters { margin: 20px auto; width: 200px; }
+.filters-mobile { margin: 20px auto; max-width: 300px; }
+.filters label, .filters-mobile label {
+  padding: 10px; background: #eee; border-radius: 5px; cursor: pointer;
+  text-align: center; user-select: none; border: none; display: block;
+}
+.filters .reset, .filters-mobile .reset { background: #ccc; }
+
+/* Активний стан для мобільних фільтрів (опційно, якщо хочеш підсвітку зверху) */
+#cat-pirig:checked     ~ header .filters-mobile label[for="cat-pirig"],
+#cat-rulet:checked     ~ header .filters-mobile label[for="cat-rulet"],
+#cat-syrnyky:checked   ~ header .filters-mobile label[for="cat-syrnyky"],
+#cat-tistechko:checked ~ header .filters-mobile label[for="cat-tistechko"],
+#cat-tort:checked      ~ header .filters-mobile label[for="cat-tort"],
+#cat-all:checked       ~ header .filters-mobile label[for="cat-all"] {
+  background: #d33; color: #fff;
+}
+
+/* Активний стан для сайдбару */
+#cat-pirig:checked     ~ .sidebar .filters label[for="cat-pirig"],
+#cat-rulet:checked     ~ .sidebar .filters label[for="cat-rulet"],
+#cat-syrnyky:checked   ~ .sidebar .filters label[for="cat-syrnyky"],
+#cat-tistechko:checked ~ .sidebar .filters label[for="cat-tistechko"],
+#cat-tort:checked      ~ .sidebar .filters label[for="cat-tort"],
+#cat-all:checked       ~ .sidebar .filters label[for="cat-all"] {
+  background: #d33; color: #fff;
+}
+
+/* Галерея та картки */
+.gallery {
+  display: grid; grid-template-columns: repeat(auto-fill, 300px);
+  gap: 20px; justify-content: center; padding: 20px; width: auto;
+}
+.card {
+  border: 1px solid #ddd; border-radius: 8px; overflow: hidden; text-align: center;
+  background: #fff; transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+.card img { width: 300px; height: 200px; object-fit: cover; }
+.card .name, .card .calories { margin: 10px; }
+
+/* Фільтрація по КАТЕГОРІЇ (CSS-only) */
+.gallery .card { display: block; }
+#cat-pirig:checked     ~ .gallery .card:not([data-cat="Пиріг"]) { display: none; }
+#cat-rulet:checked     ~ .gallery .card:not([data-cat="Рулет"]) { display: none; }
+#cat-syrnyky:checked   ~ .gallery .card:not([data-cat="Сирники"]) { display: none; }
+#cat-tistechko:checked ~ .gallery .card:not([data-cat="Тістечко"]) { display: none; }
+#cat-tort:checked      ~ .gallery .card:not([data-cat="Торт"]) { display: none; }
+#cat-all:checked       ~ .gallery .card { display: block; }
+
+/* Сайдбар */
+.sidebar { display: none; padding: 20px; border-left: 1px solid #ddd; }
+
+/* Футер */
+footer {
+  display: flex; flex-direction: column; align-items: flex-start;
+  margin: 20px; font-size: 14px; color: #555; line-height: 1.5;
+}
+footer p { margin: 0; }
+
+/* 📱 Мобільна */
+@media (max-width: 730px) {
+  .filters-mobile { grid-template-columns: 1fr 1fr; width: 90%; margin: 10px auto 20px auto; }
+  .gallery { grid-template-columns: 1fr; width: 300px; margin: 0 auto; }
+  .card .name, .card .calories { display: none; }
+  .sidebar { display: none; }
+  footer { text-align: left; margin: 20px 10px; }
+}
+
+/* 📱 Планшет */
+@media (min-width: 731px) and (max-width: 1200px) {
+  .filters-mobile { grid-template-columns: repeat(3, 1fr); max-width: 700px; margin: 10px auto 20px auto; }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+  .card .name { display: block; }
+  .card .calories { display: none; }
+  .sidebar { display: none; }
+  footer { flex-direction: row; justify-content: space-between; align-items: center; }
+}
+
+/* 💻 Десктоп */
+@media (min-width: 1201px) {
+  body {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+      "header header"
+      "gallery sidebar"
+      "footer footer";
+  }
+
+  header { grid-area: header; }
+  .filters-mobile { display: none; }
+
+  .gallery { grid-area: gallery; grid-template-columns: repeat(3, 1fr); }
+
+  .sidebar { grid-area: sidebar; display: block; }
+  .sidebar .filters { margin: 10px 0 0 0; }
+
+  footer {
+    grid-area: footer;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+  }
+  .footer-left { text-align: left; }
+  .footer-right { text-align: right; }
+
+  .card .name, .card .calories { display: block; }
+}
